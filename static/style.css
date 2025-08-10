@@ -1,0 +1,65 @@
+:root {
+    --primary: #212240;
+    --secondary: #9b7ede;
+    --background: #fffefe;
+}
+
+body {
+    font-family: "IBM Plex Serif", "Liberation Serif", Serif;
+    color: var(--primary);
+    background-color: var(--background);
+    margin: 0px;
+}
+
+a {
+    color: var(--secondary);
+}
+
+img.icon {
+    height: 1.1em;
+}
+
+div.main-container {
+    max-width: 896px;
+    margin: auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+header h1 {
+    font-size: 28pt;
+    margin-bottom: 10px;
+}
+
+div.title-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+p.pronounciation {
+    margin-top: 0px;
+}
+
+div.section-header {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+div.section-header h2 {
+    flex-grow: 1;
+    font-size: 20pt;
+    margin: 0px;
+    padding-right: 10px;
+}
+
+div.section-header hr {
+    flex-grow: 100;
+}
