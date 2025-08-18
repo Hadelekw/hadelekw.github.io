@@ -1,7 +1,7 @@
 :root {
     --primary: #212240;
     --secondary: #9b7ede;
-    --background: #fffefe;
+    --background: #fefefe;
 }
 
 body {
@@ -15,8 +15,16 @@ a {
     color: var(--secondary);
 }
 
+a:hover {
+    color: var(--primary);
+}
+
+hr {
+    border-color: var(--primary);
+}
+
 img.icon {
-    height: 1.1em;
+    height: 1.1rem;
 }
 
 div.main-container {
@@ -32,7 +40,7 @@ header {
 }
 
 header h1 {
-    font-size: 28pt;
+    font-size: 2.8rem;
     margin-bottom: 10px;
 }
 
@@ -55,11 +63,34 @@ div.section-header {
 
 div.section-header h2 {
     flex-grow: 1;
-    font-size: 20pt;
+    font-size: 1.75rem;
     margin: 0px;
     padding-right: 10px;
 }
 
 div.section-header hr {
     flex-grow: 100;
+}
+
+div.code {
+    font-family: monospace;
+    background-color: #efefef;
+    margin: 10px;
+}
+
+div.code-header {
+    background-color: var(--primary);
+    color: var(--background);
+    width: auto;
+    padding: 5px;
+}
+
+div.code-content {
+    padding: 0px 10px 5px 10px;
+}
+
+span.code {
+    font-family: monospace;
+    font-size: 14px;
+    background-color: #efefef;
 }
