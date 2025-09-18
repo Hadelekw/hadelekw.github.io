@@ -12,8 +12,28 @@
                 <div class="section-header"><h2>Contents</h2><hr></div>
                 <ol>
                     <li><a href="#installation">Installation</a></li>
-                    <li><a href="#function-list">Function list</a></li>
-                    <li><a href="#class-list">Class list</a></li>
+                    <li><a href="#function-list">Function list</a>
+                        <ul>
+                            <li><a href="#add">add</a></li>
+                            <li><a href="#mult">mult</a></li>
+                            <li><a href="#power">power</a></li>
+                            <li><a href="#modulo">modulo</a></li>
+                            <li><a href="#add-matrices">add_matrices</a></li>
+                            <li><a href="#mult-matrices">mult_matrices</a></li>
+                            <li><a href="#power-matrix">power_matrix</a></li>
+                            <li><a href="#modulo-matrices">modulo_matrices</a></li>
+                            <li><a href="#unit-matrix">unit_matrix</a></li>
+                            <li><a href="#kleene-star">kleene_star</a></li>
+                            <!--<li><a href="#eigenvalue">eigenvalue</a></li>
+                            <li><a href="#eigenvector">eigenvector</a></li>-->
+                        </ul>
+                    </li>
+                    <li><a href="#class-list">Class list</a>
+                        <ul>
+                            <li><a href="#multivariatepolynomial">MultivariatePolynomial</a></li>
+                            <li><a href="#polynomial">Polynomial</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#example-code">Example code</a></li>
                     <li><a href="#bibliography">Bibliography</a></li>
                 </ol>
@@ -37,203 +57,241 @@
             </section>
             <section id="function-list">
                 <div class="section-header"><h2>Function list</h2><hr></div>
-                <div>
-                    <p></p>
-                </div>
-                <div class="docs-function">
-                    <p><span class="code">add(*args)</span></p>
-                    <p>
-                        This function is essentially an alias for <span class="code">min</span> Python function.
-                        It also performs the necessary checks of the domain.
-                    </p>
-                    <p><i>Arguments:</i></p>
-                    <ul>
-                        <li><span class="code">*args</span>: Any numerical arguments in the tropical semiring domain.</li>
-                    </ul>
-                    <p><i>Returns:</i></p>
-                    <ul>
-                        <li>The minimum.</li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="docs-function">
-                    <p><span class="code">mult(*args)</span></p>
-                    <p>
-                        This function is essentially an alias for <span class="code">sum</span> Python function.
-                        It also performs the necessary checks of the domain.
-                    </p>
-                    <p><i>Arguments:</i></p>
-                    <ul>
-                        <li><span class="code">*args</span>: Any numerical arguments in the tropical semiring domain.</li>
-                    </ul>
-                    <p><i>Returns:</i></p>
-                    <ul>
-                        <li>The sum.</li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="docs-function">
-                    <p><span class="code">power(a, k)</span></p>
-                    <p>
-                        This applies the <span class="code">mult</span> function <span class="code">k</span>
-                        times. Currently it only allows integer powers to be used. It is equivalent to
-                        the following expression:
-                        $$ \left(a_{\otimes}^{k} = \bigotimes_{i=1}^{k}a\right) \equiv \left( k \cdot a = \sum_{i=1}^{k}a\right)$$
-                    </p>
-                    <p><i>Arguments:</i></p>
-                    <ul>
-                        <li><span class="code">a</span>: Any numerical argument in the tropical semiring domain.</li>
-                        <li><span class="code">k</span>: An integer to be used as an exponent.</li>
-                    </ul>
-                    <p><i>Returns:</i></p>
-                    <ul>
-                        <li>The product.</li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="docs-function">
-                    <p><span class="code">modulo(a, t)</span></p>
-                    <p>
-                        This function is based on the definition in [1]:
+                <section id="function-list-minplus">
+                    <div id="add" class="docs-function">
+                        <h3>add(*args)</h3>
+                        <p>
+                            An implementation of the addition operation in tropical algebra.
+                            In the <span class="code">minplus</span> package it is defined as:
+                        </p>
+                        $$ \forall a, b \in \mathbb{R}_{\min}: a \oplus b := \min\{a, b\} $$
+                        <p><i>Parameters</i></p>
+                        <ul>
+                            <li><span class="code"><b>*args</b> : float</span>: numerical arguments within the domain.</li>
+                        </ul>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : float</span>: the minimum.</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="mult" class="docs-function">
+                        <h3>mult(*args)</h3>
+                        <p>An implementation of the multiplication operation in tropical algebra.</p>
+                        $$ \forall a, b \in \mathbb{R}_{\min}: a \otimes b := a + b $$
+                        <p><i>Parameters</i></p>
+                        <ul>
+                            <li><span class="code"><b>*args</b> : float</span>: numerical arguments within the domain.</li>
+                        </ul>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : float</span>: the sum.</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="power" class="docs-function">
+                        <h3>power(a, k)</h3>
+                        <p>An implementation of the power operation in tropical algebra.</p>
+                        $$ \forall a \in \mathbb{R}_{\min}, k \in \mathbb{N}: a_{\otimes}^{k} := \bigotimes_{i=1}^{k}a $$
+                        <p><i>Parameters</i></p>
+                        <ul>
+                            <li><span class="code"><b>a</b> : float</span>: a number within the domain.</li>
+                            <li><span class="code"><b>k</b> : int</span>: an integer value of the exponent.</li>
+                        </ul>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : float</span>: the product.</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="modulo" class="docs-function">
+                        <h3>modulo(a, t)</h3>
+                        <p>An implementation of the modulo operation in tropical algebra. Based on the definition from <a href="#bib-1">[1]</a>:</p>
                         $$\forall a,t \in [0, \infty) \exists b \in [0, \infty): a \diamond t = b \iff a = b \otimes t_{\otimes}^{k}$$
-                        $$\forall a \in [0, \infty): a \diamond t = a; \quad \forall a \in [e, \infty): \infty \diamond a = \infty$$
-                    </p>
-                    <p><i>Arguments:</i></p>
-                    <ul>
-                        <li><span class="code">a</span>: Any positive numerical argument in the tropical semiring domain.</li>
-                        <li><span class="code">t</span>: An integer to be used as a divisor.</li>
-                    </ul>
-                    <p><i>Returns:</i></p>
-                    <ul>
-                        <li>The difference between the largest.</li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="docs-function">
-                    <p><span class="code">add_matrices(A, B)</span></p>
-                    <p>
-                        Perform the parallel composition (sum) of equally-sized matrices A and B. This
-                        operation is defined as:
-                        $$\left(\mathbf{A} \oplus \mathbf{B}\right)_{ij} = \mathbf{A}_{ij} \oplus \mathbf{B}_{ij}$$
-                        which is equivalent to the definition of this operation in linear algebra.
-                    </p>
-                    <p><i>Arguments:</i></p>
-                    <ul>
-                        <li><span class="code">A</span>, <span class="code">B</span>: Numpy array objects with
-                            the items within the tropical domain and of equal sizes.
-                        </li>
-                    </ul>
-                    <p><i>Returns:</i></p>
-                    <ul>
-                        <li>A new numpy array object of size equal to the size of the arguments.</li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="docs-function">
-                    <p><span class="code">mult_matrices(A, B)</span></p>
-                    <p>
-                        Perform the series composition (product) of matrices A and B with sizes m by n
-                        and n by p respectively.
-                        This operation is defined as:
-                        $$\left(\mathbf{A} \otimes \mathbf{B}\right)_{ij} = \bigoplus_{k=1}^{n}
-                        \left(\mathbf{A}_{ik} \otimes \mathbf{B}_{kj}\right)$$
-                        which is equivalent to the definition of this operation in linear algebra.
-                    </p>
-                    <p><i>Arguments:</i></p>
-                    <ul>
-                        <li><span class="code">A</span>, <span class="code">B</span>: Numpy array objects with
-                            the items within the tropical domain and of the right sizes.
-                        </li>
-                    </ul>
-                    <p><i>Returns:</i></p>
-                    <ul>
-                        <li>A new numpy array object of size equal to m by p.</li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="docs-function">
-                    <p><span class="code">power_matrix(A, k)</span></p>
-                    <p>
-                        This applies the <span class="code">mult_matrices</span> function <span class="code">k</span>
-                        times. Currently it only allows integer powers to be used.
-                    </p>
-                    <p><i>Arguments:</i></p>
-                    <ul>
-                        <li><span class="code">A</span>: A numpy array object with the items within the tropical domain.</li>
-                        <li><span class="code">k</span>: An integer to be used as an exponent.</li>
-                    </ul>
-                    <p><i>Returns:</i></p>
-                    <ul>
-                        <li>A new numpy array object of size equal to the input.</li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="docs-function">
-                    <p><span class="code">modulo_matrices(A, b)</span></p>
-                    <p>
-                        This calculates the modulo of an n by m matrix A and an n-element vector b. This is by definition from [1]:
-                        $$\mathbf{B}_{ij} = \mathbf{A}_{ij} \diamond \mathbf{b}_i$$
-                        where B is an n by m matrix.
-                    </p>
-                    <p><i>Arguments:</i></p>
-                    <ul>
-                        <li><span class="code">A</span>: A numpy array object with the items within the tropical domain.</li>
-                        <li>
-                            <span class="code">b</span>: A numpy array object with the items within the tropical domain.
-                            It has to be 2-dimensional and of size corresponding to the definition of <span class="code">A</span>.
-                        </li>
-                    </ul>
-                    <p><i>Returns:</i></p>
-                    <ul>
-                        <li>A new numpy array object of size equal to the size of <span class="code">A</span>.</li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="docs-function">
-                    <p><span class="code">unit_matrix(width, height)</span></p>
-                    <p>
-                        Returns a 2-dimensional tropical unit matrix of given size.
-                    </p>
-                    <p><i>Arguments:</i></p>
-                    <ul>
-                        <li><span class="code">width</span>: the width of the matrix.</li>
-                        <li><span class="code">height</span>: the height of the matrix.</li>
-                    </ul>
-                    <p><i>returns:</i></p>
-                    <ul>
-                        <li>A new numpy array object of given size.</li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="docs-function">
-                    <p><span class="code">star(A)</span></p>
-                    <p>
-                        An unitary operator defined on a square matrix:
-                        $$\mathbf{A}^{*} = \bigoplus_{k \in \mathbb{N}} \mathbf{A}_{\otimes}^{k}$$
-                    </p>
-                    <p><i>Arguments:</i></p>
-                    <ul>
-                        <li><span class="code">A</span>: A square numpy array object with the items within the tropical domain.</li>
-                    </ul>
-                    <p><i>Returns:</i></p>
-                    <ul>
-                        <li>A new numpy array object of size equal to the input.</li>
-                    </ul>
-                </div>
+                        $$\forall a \in [0, \infty): a \diamond \infty = a; \quad \forall a \in [e, \infty): \infty \diamond a = \infty$$
+                        <p><i>Parameters</i></p>
+                        <ul>
+                            <li><span class="code"><b>a</b> : float</span>: a positive number within the domain.</li>
+                            <li><span class="code"><b>t</b> : int</span>: an positive integer value of the exponent.</li>
+                        </ul>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : float</span>: the remainder.</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="add-matrices" class="docs-function">
+                        <h3>add_matrices(A, B)</h3>
+                        <p>An implementation of parallel composition (sum) of matrices of the same size.</p>
+                        $$ \left(\mathbf{A} \oplus \mathbf{B}\right)_{ij} := \mathbf{A}_{ij} \oplus \mathbf{B}_{ij} $$
+                        <p><i>Parameters</i></p>
+                        <ul>
+                            <li><span class="code"><b>A</b> : numpy.ndarray</span>: a NumPy array.</li>
+                            <li><span class="code"><b>B</b> : numpy.ndarray</span>: a NumPy array of the same size as A.</li>
+                        </ul>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : numpy.ndarray</span>: a NumPy array with minimal entries.</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="mult-matrices" class="docs-function">
+                        <h3>mult_matrices(A, B)</h3>
+                        <p>An implementation of series composition (product) of matrices of sizes MxN and NxP.</p>
+                        $$ \left(\mathbf{A} \otimes \mathbf{B}\right)_{ij} := \bigoplus_{k=1}^{N}\left(\mathbf{A}_{ik} \otimes \mathbf{B}_{kj}\right) $$
+                        <p><i>Parameters</i></p>
+                        <ul>
+                            <li><span class="code"><b>A</b> : numpy.ndarray</span>: a NumPy array of size MxN.</li>
+                            <li><span class="code"><b>B</b> : numpy.ndarray</span>: a NumPy array of size NxP.</li>
+                        </ul>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : numpy.ndarray</span>: a NumPy array of size MxP.</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="power-matrix" class="docs-function">
+                        <h3>power_matrix(A, k)</h3>
+                        <p>An implementation of multiple multiplication on a matrix. By definition from <a href="#bib-1">[1]</a>:</p>
+                        $$ \exists k_0 \forall k \geq k_0: \mathbf{A}_{\otimes}^{k + 1} := \mathbf{A}_{\otimes}^{k} $$
+                        $$ \mathbf{A}_{\otimes}^{k} = \mathbf{A} \otimes \mathbf{A}_{\otimes}^{k - 1}, \quad \mathbf{A}_{\otimes}^{0} = \mathbf{E} $$
+                        <p>with E being a tropical unit matrix. It applies if A is a matrix with non-negative entries and its diagonal elements are equal to the tropical identity element.</p>
+                        <p><i>Parameters</i></p>
+                        <ul>
+                            <li><span class="code"><b>A</b> : numpy.ndarray</span>: a NumPy array.</li>
+                            <li><span class="code"><b>k</b> : int</span>: an integer value of the exponent.</li>
+                        </ul>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : numpy.ndarray</span>: a NumPy array.</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="modulo-matrices" class="docs-function">
+                        <h3>modulo_matrices(A, b)</h3>
+                        <p>
+                            An implementation of the modulo operation for matrices according to <a href="#bib-1">[1]</a>.
+                            If A is an MxN matrix with non-negative entries and b is an m-element vector with non-negative
+                            entries, then B is an MxN matrix defined by:
+                        </p>
+                        $$ \mathbf{B}_{ij} := \mathbf{A}_{ij} \diamond \mathbf{b}_{i} $$
+                        <p><i>Parameters</i></p>
+                        <ul>
+                            <li><span class="code"><b>A</b> : numpy.ndarray</span>: a NumPy array.</li>
+                            <li><span class="code"><b>b</b> : numpy.ndarray</span>: a vertical NumPy array of size Mx1.</li>
+                        </ul>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : numpy.ndarray</span>: a NumPy array of remainders.</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="unit-matrix" class="docs-function">
+                        <h3>unit_matrix(width, height)</h3>
+                        <p>
+                            Generates a two dimensional tropical unit matrix.
+                            In the <span class="code">minplus</span> package it is defined as:
+                        </p>
+                        $$ \mathbf{E}_{ij} := \begin{cases}
+                        0, &i = j\\
+                        \infty, &i \neq j
+                        \end{cases}
+                        $$
+                        <p><i>Parameters</i></p>
+                        <ul>
+                            <li><span class="code"><b>width</b> : int</span>: the width of the unit matrix.</li>
+                            <li><span class="code"><b>height</b> : int</span>: the height of the unit matrix.</li>
+                        </ul>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : numpy.ndarray</span>: a NumPy array tropical unit matrix.</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="kleene-star" class="docs-function">
+                        <h3>kleene_star(A, iterations)</h3>
+                        <p>An implementation of Kleene star operator for tropical algebra.</p>
+                        $$ \mathbf{A}^{*} := \bigoplus_{k=1}^{\infty} \mathbf{A}_{\otimes}^{k}$$
+                        <p>As of version <span class="code">0.0.3</span> this function does not check the convergence of the series.</p>
+                        <p><i>Parameters</i></p>
+                        <ul>
+                            <li><span class="code"><b>A</b> : numpy.ndarray</span>: a square NumPy array.</li>
+                            <li><span class="code"><b>iterations</b> : int</span>: an arbitrary amount of iterations to calculate the series (default 1000).</li>
+                        </ul>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : numpy.ndarray</span>: a NumPy array.</li>
+                        </ul>
+                    </div>
+                </section>
             </section>
             <section id="class-list">
                 <div class="section-header"><h2>Class list</h2><hr></div>
-                <div class="docs-class">
-                    <p><span class="code">Polynomial(*coefficients)</span></p>
-                    <p>
-                        A class which representing a tropical polynomial with one variable.
-                    </p>
-                    <p><i>Functions:</i></p>
+                <div id="multivariatepolynomial" class="docs-class">
+                    <h3>MultivariatePolynomial(coefficients)</h3>
+                    <p>An implementation of a multivariate tropical polynomial.</p>
+                    <p><i>Constructor parameters</i></p>
                     <ul>
-                        <li><span class="code">__call__(x)</span>: return the value of the polynomial for a given point.</li>
-                        <li><span class="code">get_lines()</span>: returns the a and b values of standard linear functions building the polynomial in form of y = ax + b.</li>
-                        <li><span class="code">get_hypersurface()</span>: returns a list of the polynomial's roots.</li>
+                        <li>
+                            <span class="code"><b>coefficients</b> : numpy.ndarray</span>: a NumPy array representing coefficients with one dimension being a new variable,
+                            i.e. a 2-dimensional 3x3 array would represent a polynomial of 2 variables and their combinations depending on their position in the array
+                            (the indices represent the powers in the polynomial).
+                        </li>
                     </ul>
+                    <p><i>Functions</i></p>
+                    <div class="docs-function">
+                        <h3>MultivariatePolynomial.__call__(*variables)</h3>
+                        <p><i>Parameters</i></p>
+                        <ul>
+                            <li><span class="code"><b>*variables</b> : float</span>: a sequence of values within the domain to calculate the value of the polynomial for.</li>
+                        </ul>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : float</span>: the value of the polynomial at given point.</li>
+                        </ul>
+                    </div>
+                    <div class="docs-function">
+                        <h3>MultivariatePolynomial.__str__()</h3>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : str</span>: a written notation of the polynomial.</li>
+                        </ul>
+                    </div>
+                    <div class="docs-function">
+                        <h3>MultivariatePolynomial.get_hyperplanes()</h3>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : list</span>: a list of linear coefficients for the hyperplanes building the polynomial.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div id="polynomial" class="docs-class">
+                    <h3>Polynomial(*coefficients)</h3>
+                    <p><i>Inherits from <a href="#multivariatepolynomial">MultivariatePolynomial</a></i></p>
+                    <p>An implementation of a single variable tropical polynomial.</p>
+                    <p><i>Constructor parameters</i></p>
+                    <ul>
+                        <li>
+                            <span class="code"><b>*coefficients</b> : float</span>: values to be used as coefficients.
+                        </li>
+                    </ul>
+                    <p><i>Functions</i></p>
+                    <div class="docs-function">
+                        <h3>Polynomial.get_line_intersections()</h3>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>result</b> : list</span>: a list of points where the lines building the polynomial intersect.</li>
+                        </ul>
+                    </div>
+                    <div class="docs-function">
+                        <h3>Polynomial.get_roots()</h3>
+                        <p><i>Returns</i></p>
+                        <ul>
+                            <li><span class="code"><b>roots</b> : list</span>: a list of the roots' values.</li>
+                            <li><span class="code"><b>ranks</b> : list</span>: a list of the corresponding ranks (amount of monomials attaining the value).</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
             <section id="example-code">
@@ -244,7 +302,7 @@
                         <p><span class="code">
                             import mplusa.minplus as mp<br>
                             import numpy as np<br><br>
-                            A, B = np.random.rand(5, 5), np.random.rand(5, 5)<br>
+                            A, B = numpy.random.rand(5, 5), numpy.random.rand(5, 5)<br>
                             C = mp.add_matrices(A, B)
                         </span></p>
                     </div>
@@ -252,14 +310,19 @@
             </section>
             <section id="bibliopgraphy">
                 <div class="section-header"><h2>Bibliography</h2><hr></div>
-                <p>
+                <p id="bib-1">
                     [1] Obuchowicz, A., D'Souza, K. A., Banaszak, Z. A. (1998).
                     An Algebraic Approach to Modelling and Performance Optimisation of a Traffic Route System.
                     <i>International Journal of Applied Mathematics and Computer Science</i>, 8(2), 335-365.
                 </p>
-                <p>
+                <p id="bib-2">
                     [2] Speyer, D., Sturmfels, B. (2009). Tropical Mathematics.
                     <i>Mathematics Magazine</i>, 82(3), 163-173.
+                </p>
+                <p id="bib-3">
+                    [3] Carnia, E., Wilopo, R., Napitupulu, H., Anggriani, N., Supriatna, A. K. (2023).
+                    Modified Kleene Star Algorithm Using Max-Plus Algebra and Its Application in the Railroad Scheduling Graphical User Interface.
+                    <i>Computation</i>, 11(1), 11.
                 </p>
             </section>
         </div>

@@ -40,7 +40,7 @@ header {
 }
 
 header h1 {
-    font-size: 2.8rem;
+    font-size: 28px;
     margin-bottom: 10px;
 }
 
@@ -63,7 +63,7 @@ div.section-header {
 
 div.section-header h2 {
     flex-grow: 1;
-    font-size: 1.75rem;
+    font-size: 24px;
     margin: 0px;
     padding-right: 10px;
 }
@@ -91,6 +91,17 @@ div.code-content {
 
 span.code {
     font-family: monospace;
-    font-size: 14px;
     background-color: #efefef;
+}
+
+div.docs-class,
+div.docs-function {
+    border-left: 1px solid var(--secondary);
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+div.docs-class h3,
+div.docs-function h3 {
+    font-family: monospace;
 }
