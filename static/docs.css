@@ -1,0 +1,34 @@
+article {
+    section {
+        border-left: 2px solid var(--secondary);
+        margin-left: 10px;
+        padding-left: 10px;
+        h3 {
+            font-family: monospace;
+        }
+    }
+
+    section:target {
+        h3 {
+            background-color: yellow;
+        }
+    }
+}
+
+dt {
+    font-style: italic;
+}
+
+dd {
+    mark {
+        font-family: monospace;
+        background-color: #efefef;
+    }
+    ul {
+        padding-left: 0px;
+    }
+}
+
+p:target {
+    background-color: yellow;
+}

@@ -1,0 +1,77 @@
+:root {
+    --primary: #212240;
+    --secondary: #9b7ede;
+    --background: #fcfcfc;
+}
+
+body {
+    font-family: "IBM Plex Serif", "Liberation Serif", Serif;
+    color: var(--primary);
+    background-color: var(--background);
+    margin: 0px;
+}
+
+a {
+    color: var(--secondary);
+}
+
+a:hover {
+    color: var(--primary);
+}
+
+img.icon {
+    height: 1.1rem;
+}
+
+main {
+    max-width: 896px;
+    margin: auto;
+    padding: 20px;
+}
+
+article {
+    h2 {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+    }
+    h2::after {
+        flex-grow: 1;
+        background-color: var(--primary);
+        height: 2px;
+        content: "";
+    }
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    section {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+    p {
+        margin-top: 0px;
+    }
+}
+
+div.code {
+    font-family: monospace;
+    background-color: #efefef;
+    margin: 10px;
+}
+
+div.code-header {
+    background-color: var(--primary);
+    color: var(--background);
+    width: auto;
+    padding: 5px;
+}
+
+div.code-content {
+    padding: 0px 10px 5px 10px;
+}

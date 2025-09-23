@@ -1,16 +1,16 @@
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Maksymilian Wiekiera's website</title>
-        <link rel="stylesheet" href="static/style.css"/>
+        <link rel="stylesheet" href="static/base.css"/>
     </head>
     <body>
-        <div class="main-container">
+        <main>
             <header>
-                <div class="title-container">
-                    <h1>Maksymilian Wiekiera</h1>
-                </div>
-                <p class="pronounciation">[maksɨˈmʲilʲjan vʲjɛˈkʲjɛra]</p>
-                <div class="title-container">
+                <section><h1>Maksymilian Wiekiera</h1></section>
+                <section><p>[maksɨˈmʲilʲjan vʲjɛˈkʲjɛra]</p></section>
+                <section>
                     <a href="https://github.com/Hadelekw">
                         <img class="icon" src="static/icons/github.svg"/>Github
                     </a>
@@ -20,19 +20,19 @@
                     <a href="static/cv.pdf">
                         <img class="icon" src="static/icons/university.svg"/>CV
                     </a>
-                </div>
+                </section>
             </header>
-            <section id="contents">
-                <div class="section-header"><h2>Contents</h2><hr></div>
+            <article id="contents">
+                <h2>Contents</h2>
                 <ol>
                     <li><a href="#personal-information">Personal information</a></li>
                     <li><a href="#research-interests">Research interests</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#publications">Publications</a></li>
                 </ol>
-            </section>
-            <section id="personal-information">
-                <div class="section-header"><h2>Personal information</h2><hr></div>
+            </article>
+            <article id="personal-information">
+                <h2>Personal information</h2>
                 <p>
                     My name is Maksymilian Wiekiera. I have recently graduated from University in Zielona Góra
                     in <i>Computer Science</i> with the title of Master of Engineering. Previously I have acquired
@@ -49,9 +49,9 @@
                     intersection systems using metaheuristics and an algorithm based on tropical algebra. This
                     project was also the basis of my master's thesis.
                 </p>
-            </section>
-            <section id="research-interests">
-                <div class="section-header"><h2>Research interests</h2><hr></div>
+            </article>
+            <article id="research-interests">
+                <h2>Research interests</h2>
                 <i>The list presented below is not an exhaustive one.</i>
                 <ul>
                     <li>
@@ -79,9 +79,9 @@
                         </p>
                     </li>
                 </ul>
-            </section>
-            <section id="projects">
-                <div class="section-header"><h2>Projects</h2><hr></div>
+            </article>
+            <article id="projects">
+                <h2>Projects</h2>
                 <ul>
                     <li>
                         <p>
@@ -98,9 +98,9 @@
                         </p>
                     </li>
                 </ul>
-            </section>
-            <section id="publications">
-                <div class="section-header"><h2>Publications</h2><hr></div>
+            </article>
+            <article id="publications">
+                <h2>Publications</h2>
                 <h3>In preparation</h3>
                 <ul>
                     <li>
@@ -130,16 +130,15 @@
                         </p>
                     </li>
                 </ul>
-            </section>
-            <section id="disclaimer">
-                <hr>
+            </article>
+            <footer>
                 <p>
                     <i>
                         Disclaimer: If any of the published information on this website will be deemed inappropriate, please
                         inform me via e-mail so the issues can be quickly resolved.
                     </i>
                 </p>
-            </section>
-        </div>
+            </footer>
+        </main>
     </body>
 </html>
