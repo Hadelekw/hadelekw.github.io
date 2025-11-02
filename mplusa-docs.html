@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -5,7 +6,7 @@
         <title>MPlusA docs</title>
         <link rel="stylesheet" href="static/base.css"/>
         <link rel="stylesheet" href="static/docs.css"/>
-        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     </head>
     <body>
         <main>
@@ -29,8 +30,11 @@
                             <li><a href="#function-modulo-matrices">modulo_matrices</a></li>
                             <li><a href="#function-unit-matrix">unit_matrix</a></li>
                             <li><a href="#function-kleene-star">kleene_star</a></li>
-                            <!--<li><a href="#eigenvalue">eigenvalue</a></li>
-                            <li><a href="#eigenvector">eigenvector</a></li>-->
+                            <!--
+                            <li><a href="#function-kleene-plus">kleene_plus</a></li>
+                            <li><a href="#function-eigenvalue">eigenvalue</a></li>
+                            <li><a href="#function-eigenvector">eigenvector</a></li>
+                            -->
                         </ul>
                     </li>
                     <li><a href="#class-list">Class list</a>
@@ -285,7 +289,7 @@
                         <dd>
                             <ul>
                                 <li>
-                                    <span class="code"><b>coefficients</b> : numpy.ndarray</span>: a NumPy array representing coefficients with one dimension being a new variable,
+                                    <mark><b>coefficients</b> : numpy.ndarray</mark>: a NumPy array representing coefficients with one dimension being a new variable,
                                     i.e. a 2-dimensional 3x3 array would represent a polynomial of 2 variables and their combinations depending on their position in the array
                                     (the indices represent the powers in the polynomial).
                                 </li>
@@ -338,8 +342,7 @@
 
                 <section id="class-polynomial">
                     <h3>Polynomial(*coefficients)</h3>
-                    <p><i>Inherits from <a href="#class-multivariatepolynomial">MultivariatePolynomial</a></i></p>
-                    <p>An implementation of a single variable tropical polynomial.</p>
+                    <p>An implementation of a single variable tropical polynomial. Inherits from <a href="#class-multivariatepolynomial">MultivariatePolynomial</a>.</p>
                     <dl>
                         <dt>Constructor parameters</dt>
                         <dd>
@@ -375,7 +378,7 @@
                                 </dl>
                             </section>
                         </dd>
-                    </dl> how ben and adam shot sam, cheered about the victory and ran away by still rolling a die and counting steps was extremely amusing to me
+                    </dl>
                 </section>
             </article>
             <article id="example-code">
